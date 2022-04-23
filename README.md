@@ -30,6 +30,11 @@ server {
                 proxy_set_header X-NginX-Proxy true;
     }
 
+    # protect auth-server danger api, change_pass can ben called only for middle-server
+    location  /change_pass {
+            break;   
+    }   
+
     # auth-middle-server for Domeland Web3-Dapp
     location  /web3 {
                 proxy_redirect off;
