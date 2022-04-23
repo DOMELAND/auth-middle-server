@@ -17,7 +17,7 @@ server {
     root /var/www/html;
     index index.html index.htm index.nginx-debian.html;
       
-    # auth-server  for game
+    # auth-server  for DomeLand/Veloren Game-server
     location  / {
                 proxy_redirect off;
                 proxy_pass http://127.0.0.1:8081;   
@@ -30,7 +30,7 @@ server {
                 proxy_set_header X-NginX-Proxy true;
     }
 
-    # auth-middle-server for web3-token
+    # auth-middle-server for Domeland Web3-Dapp
     location  /web3 {
                 proxy_redirect off;
                 proxy_pass http://127.0.0.1:8082;
