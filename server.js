@@ -47,7 +47,7 @@ app.post('/web3/register',  async (req, res) => {
         method: 'post',
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
-    })
+    });
 
   console.log(resp.status);
   console.log(resp.statusText);
@@ -81,6 +81,7 @@ app.post('/web3/changepass', tokenVerify, async (req, res) => {
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
     });
+    
     console.log(resp.status);
     console.log(resp.statusText);
     let text = await resp.text();
