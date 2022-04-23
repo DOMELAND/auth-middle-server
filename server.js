@@ -22,8 +22,7 @@ let checkStatus  = function (res) {
   if (res.ok) { // res.status >= 200 && res.status < 300
      // console.log(res.ok);
      // console.log(res.status);
-     // console.log(res.statusText);
-    // res.status(400).json({ message: res.statusText });
+     console.log(res.statusText);
      return res;
   } else {
       res.status(400).json({ message: res.statusText });
@@ -66,7 +65,7 @@ app.post('/web3/register',  async (req, res) => {
         headers: { 'Content-Type': 'application/json' },
     })
     .then(checkStatus)
-    .then(res => console.log('will not get here...'));
+    .then(res.json({ message: res.statusText });
 
 });
 
@@ -97,7 +96,7 @@ app.post('/web3/changepass',  async (req, res) => {
         headers: { 'Content-Type': 'application/json' },
     })
     .then(checkStatus)
-    .then(res => console.log('will not get here...'));
+    .then(res.json({ message: res.statusText });
 
 });
 
