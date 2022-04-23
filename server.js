@@ -22,8 +22,9 @@ let checkStatus  = function (res) {
   if (res.ok) { // res.status >= 200 && res.status < 300
      //console.log(res.ok);
      //console.log(res.status);
+     let rs = res.status;
      console.log(res.statusText);
-     res.status(res.status).json({ message: res.statusText });
+     res.status(rs).json({ message: res.statusText });
   } else {
       res.status(400).json({ message: res.statusText });
       // throw new Error(res.statusText);
