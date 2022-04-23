@@ -65,10 +65,10 @@ app.post('/web3/register',  async (req, res) => {
         headers: { 'Content-Type': 'application/json' },
     })
     .then(checkStatus)
-    .then( {
+    .then( ()=>{
       console.log(res.statusText); 
-      res.json({ message:res.statusText) })
-    });
+      res.json({ message: res.statusText})
+     });
 });
 
 // Web3-token verify api
