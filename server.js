@@ -84,7 +84,7 @@ app.post('/web3/changepass',  async (req, res) => {
     .then( function (resp) {
          console.log(resp.status);
          console.log(resp.statusText);
-         console.log(resp);
+         console.log(resp.json());
          res.status(resp.status).json({ message: resp.statusText });
     })
 
