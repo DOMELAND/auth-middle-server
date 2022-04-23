@@ -64,7 +64,7 @@ app.post('/web3/register',  async (req, res) => {
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
     })
-    .then(checkStatus);
+    .then(checkStatus)
     .then(res.json({ message: res.mesg}));
 });
 
@@ -94,8 +94,8 @@ app.post('/web3/changepass',  async (req, res) => {
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
     })
-    .then(checkStatus);
-  //  .then(res.json({ message: res.statusText}));
+    .then(checkStatus)
+    .then(res.json({ message: res.statusText}));
 
 });
 
