@@ -23,6 +23,7 @@ let checkStatus  = function (res) {
      //console.log(res.ok);
      console.log(res.status);
      console.log(res.statusText);
+     res.mesg = res.statusText;
      return res;
   } else {
       res.status(400).json({ message: res.statusText });
@@ -65,7 +66,7 @@ app.post('/web3/register',  async (req, res) => {
         headers: { 'Content-Type': 'application/json' },
     })
     .then(checkStatus)
-    .then( ()=>{
+    .then( (res)=>{
       console.log(res.statusText); 
       res.json({ message: res.statusText})
      });
