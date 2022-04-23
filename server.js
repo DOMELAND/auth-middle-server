@@ -41,7 +41,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.get('/web3', async (req, res) => {
-  res.json({ message: 'DOMELAND API, Verify token by access /web3/verify' });
+  res.json({ message: 'Hello DOMELAND Web3 API, Verify token by access /web3/verify' });
 });
 
 

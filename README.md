@@ -80,11 +80,10 @@ To keep your data secured, it is essential to setup the server to be connected t
  To test the DOMELAND Account web sevice, following are some cases  <br>
  ( test tools: https://www.apifox.cn/web/  or POSTMAN):
 
-##### API: ping-pong Test
+##### API: Web3 Hello Test
 
 ```
- URL:  http://localhost:19253
- with web3-token in header 
+ URL:  http://localhost:19253/web3
  Method: GET
 ```
 
