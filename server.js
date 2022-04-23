@@ -26,7 +26,7 @@ let checkfunction  = function (res) {
      return res;
   } else {
       res.status(400).json({ message: res.statusText });
-     // throw new Error(res.statusText);
+      // throw new Error(res.statusText);
   }
 };
 
