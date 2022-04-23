@@ -14,7 +14,7 @@ To build the server, you can simply run the following command: `npm install`
 
 ### Local server
 
-1. you can set the server PORT in dotenv config file：".env "
+1. you can set server listening PORT in dotenv config file：`vim .env`
 2. start server run the command: `npm start`
 
 ### Run the auth server as a service using pm2
