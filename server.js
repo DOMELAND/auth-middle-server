@@ -31,8 +31,8 @@ app.get('/web3', async (req, res) => {
 
 
 // Domeland user register api
-app.post('/web3/register', tokenVerify, async (req, res) => {
-//app.post('/web3/register',  async (req, res) => {
+//app.post('/web3/register', tokenVerify, async (req, res) => {
+app.post('/web3/register',  async (req, res) => {
     let address =  req.body.ethaddr;
     let passwd = req.body.password;
     let usernm = req.body.username;
@@ -48,7 +48,7 @@ app.post('/web3/register', tokenVerify, async (req, res) => {
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
     })
-    
+
   console.log(resp.status);
   console.log(resp.statusText);
   let text = await resp.text();
