@@ -16,20 +16,6 @@ let tokenVerify = async (req, res, next) => {
 };
 
 
-//注：3xx-5xx响应为不是异常
-//通常创建一个helper函数来检查响应是否有（4xx）或服务器（5xx）错误响应
-let checkStatus  = function (resp) {
-  if (resp.ok) { // res.status >= 200 && res.status < 300
-     //console.log(res.ok);
-     console.log(resp.status);
-     console.log(resp.statusText);
-     return resp;
-  } else {
-    res.status(500).json({ message: resp.statusText });
-  }
-};
-
-
 // Create express app
 const app = express();
 
@@ -51,7 +37,6 @@ app.post('/web3/register',  async (req, res) => {
     let passwd = req.body.password;
     let usernm = req.body.username;
 
-      
     const body = {
         ethaddr : address,
         password : passwd,
@@ -96,15 +81,18 @@ app.post('/web3/changepass',  async (req, res) => {
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
     })
-    .then(checkStatus)
-    .then(res.json({ message: res.statusText}));
+    .then( function (resp) {
+         console.log(resp.status);
+         console.log(resp.statusText);
+         res.status(resp.status).json({ message: resp.statusText });
+    })
 
 });
 
 
 // Error Process Middleware
 app.use((err, req, res, next) => {
-  res.status(400).json({ message: err.message })
+  res.status(500).json({ message: err.message })
 })
 
 
