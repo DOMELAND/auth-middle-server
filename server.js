@@ -43,16 +43,16 @@ app.post('/web3/register', tokenVerify, async (req, res) => {
         username : usernm
     };
 
-  fetch('http://localhost:8081/register', {
+  let resp = fetch('http://localhost:8081/register', {
         method: 'post',
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
     })
-    .then( function (resp) {
-         console.log(resp.status);
-         console.log(resp.statusText);
-         res.status(resp.status).json({ message: resp.statusText });
-    })
+    
+  console.log(resp.status);
+  console.log(resp.statusText);
+  let text = await resp.text();
+  res.status(resp.status).json({ message: text});
 });
 
 // Web3-token verify api
@@ -76,16 +76,15 @@ app.post('/web3/changepass', tokenVerify, async (req, res) => {
        password : passwd
     };
 
-    fetch('http://localhost:8081/change_pass', {
+    let resp = await fetch('http://localhost:8081/change_pass', {
         method: 'post',
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
-    })
-    .then( function (resp) {
-         console.log(resp.status);
-         console.log(resp.statusText);
-         res.status(resp.status).json({ message: resp.statusText });
-    })
+    });
+    console.log(resp.status);
+    console.log(resp.statusText);
+    let text = await resp.text();
+    res.status(resp.status).json({ message: text});
 
 });
 
