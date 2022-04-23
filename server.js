@@ -24,7 +24,8 @@ let checkStatus  = function (res) {
      //console.log(res.status);
      let rs = res.status;
      console.log(res.statusText);
-     res.status(rs).json({ message: res.statusText });
+     res.mesg = res.statusText;
+     return res;
   } else {
       res.status(400).json({ message: res.statusText });
       // throw new Error(res.statusText);
@@ -66,7 +67,7 @@ app.post('/web3/register',  async (req, res) => {
         headers: { 'Content-Type': 'application/json' },
     })
     .then(checkStatus);
-  //  .then(res.json({ message: res.statusText}));
+    .then(res.json({ message: res.mesg}));
 });
 
 // Web3-token verify api
