@@ -28,7 +28,7 @@ server {
                 proxy_set_header X-NginX-Proxy true;
     }
 
-    # protect auth-server danger api, change_pass can ben called only for middle-server
+    # /change_pass API can be called only for middle-server.  !!!
     location  /change_pass {
             break;   
     }   
