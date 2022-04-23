@@ -14,6 +14,9 @@ To build the server, you can simply run the following command: `npm install`
 
 ### Local server
 
+1. you can set the server PORT in dotenv config file：".env "
+2. start server run the command: `npm start`
+
 ### Run the auth server as a service using pm2
  You can install PM2 , and use pm2 run the auth-server as a service. <br>
  1. first install PM2 : `npm install pm2@latest -g` <br>
