@@ -21,7 +21,7 @@ let tokenVerify = async (req, res, next) => {
 let checkStatus  = function (res) {
   if (res.ok) { // res.status >= 200 && res.status < 300
      //console.log(res.ok);
-     //console.log(res.status);
+     console.log(res.status);
      console.log(res.statusText);
      return res;
   } else {
@@ -65,7 +65,10 @@ app.post('/web3/register',  async (req, res) => {
         headers: { 'Content-Type': 'application/json' },
     })
     .then(checkStatus)
-    .then(res.json({ message: res.mesg}));
+    .then( {
+      console.log(res.statusText); 
+      res.json({ message:res.statusText) })
+    });
 });
 
 // Web3-token verify api
