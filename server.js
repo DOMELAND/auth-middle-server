@@ -46,7 +46,8 @@ app.get('/web3', async (req, res) => {
 
 
 // Domeland user register api
-app.post('/web3/register', tokenVerify, async (req, res) => {
+// app.post('/web3/register', tokenVerify, async (req, res) => {
+app.post('/web3/register',  async (req, res) => {
     let address =  req.body.ethaddr;
     let passwd = req.body.password;
     let usernm = req.body.username;
@@ -79,7 +80,8 @@ app.get('/web3/verify', async (req, res) => {
 
 // User change password
 // need the ethaddr and password passed as a JSON object: {“ethaddr":”0x8C.......34b", “password": “123456789"}
-app.post('/web3/changepass', tokenVerify, async (req, res) => {
+// app.post('/web3/changepass', tokenVerify, async (req, res) => {
+app.post('/web3/changepass',  async (req, res) => {
     let address =  req.body.ethaddr;
     let passwd = req.body.password;
     
