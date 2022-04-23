@@ -20,9 +20,10 @@ let tokenVerify = async (req, res, next) => {
 //通常创建一个helper函数来检查响应是否有（4xx）或服务器（5xx）错误响应
 let checkStatus  = function (res) {
   if (res.ok) { // res.status >= 200 && res.status < 300
-     // console.log(res.ok);
-     // console.log(res.status);
+     console.log(res.ok);
+     console.log(res.status);
      console.log(res.statusText);
+     console.log(res.messages);
      return res;
   } else {
       res.status(400).json({ message: res.statusText });
@@ -65,7 +66,7 @@ app.post('/web3/register',  async (req, res) => {
         headers: { 'Content-Type': 'application/json' },
     })
     .then(checkStatus)
-    .then(res.json({ message: res.statusText + res.ok }));
+    .then(res.json({ message: res.statusText}));
 });
 
 // Web3-token verify api
