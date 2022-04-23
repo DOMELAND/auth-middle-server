@@ -61,11 +61,10 @@ To keep your data secured, it is essential to setup the server to be connected t
  } 
 ```
 
-##### API: generate one-time access token to  game-server
-
+##### API: verify web3-token 
 ```
  URL: http://localhost:19253/web3/verify
- Method: POST
+ Method: GET
  with web3-token in header
 ```
 
