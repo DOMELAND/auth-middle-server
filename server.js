@@ -65,8 +65,7 @@ app.post('/web3/register',  async (req, res) => {
         headers: { 'Content-Type': 'application/json' },
     })
     .then(checkStatus)
-    .then(res.json({ message: res.statusText });
-
+    .then(res.json({ message: res.statusText }));
 });
 
 // Web3-token verify api
@@ -96,7 +95,7 @@ app.post('/web3/changepass',  async (req, res) => {
         headers: { 'Content-Type': 'application/json' },
     })
     .then(checkStatus)
-    .then(res.json({ message: res.statusText });
+    .then(res.json({ message: res.statusText }));
 
 });
 
