@@ -6,6 +6,47 @@ This is the implementation of the  auth-middle-server  for Domeland
 
 ![](https://s3.bmp.ovh/imgs/2022/04/23/01a5780c227c88f9.png)
 
+
+#### Nginx Config
+
+```
+server {
+
+    listen 19253;
+    server_name gw.test.com;    #your domain name
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+      
+    # auth-server  for game
+    location  / {
+                proxy_redirect off;
+                proxy_pass http://127.0.0.1:8081;   
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_set_header X-NginX-Proxy true;
+    }
+
+    # auth-middle-server for web3-token
+    location  /web3 {
+                proxy_redirect off;
+                proxy_pass http://127.0.0.1:8082;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_set_header X-NginX-Proxy true;
+   }
+
+}
+
+```
+
 ## Dependencies
 
 The Middle server is implemented using JS.
