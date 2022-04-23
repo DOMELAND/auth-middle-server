@@ -23,7 +23,6 @@ let checkStatus  = function (res) {
      //console.log(res.ok);
      console.log(res.status);
      console.log(res.statusText);
-     res.mesg = res.statusText;
      return res;
   } else {
       res.status(400).json({ message: res.statusText });
