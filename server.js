@@ -18,11 +18,12 @@ let tokenVerify = async (req, res, next) => {
 
 //注：3xx-5xx响应为不是异常
 //通常创建一个helper函数来检查响应是否有（4xx）或服务器（5xx）错误响应
-let checkfunction  = function (res) {
+let checkStatus  = function (res) {
   if (res.ok) { // res.status >= 200 && res.status < 300
      // console.log(res.ok);
      // console.log(res.status);
      // console.log(res.statusText);
+    // res.status(400).json({ message: res.statusText });
      return res;
   } else {
       res.status(400).json({ message: res.statusText });
