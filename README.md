@@ -69,7 +69,7 @@ To build the server, you can simply run the following command: `npm install`
  You can install PM2 , and use pm2 run the auth-server as a service. <br>
 
 1. first install PM2 : `npm install pm2@latest -g` <br>
-2. then run auth-server by PM2 : `pm2 start auth-middle-server/server.js`<br>
+2. then run auth-server by PM2 : `pm2 start server.js`<br>
 3. more PM2 infomation: https://pm2.keymetrics.io/docs/usage/quick-start/ <br>
 
 #### Deployment notice
