@@ -40,7 +40,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(tokenVerify);
 
 // Routes
-app.get('/',  tokenVerify,async (req, res) => {
+app.get('/', async (req, res) => {
   res.json({ message: 'DOMELAND API, Verify token by access /web3/verify' });
 });
 
