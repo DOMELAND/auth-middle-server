@@ -1,4 +1,4 @@
-# auth
+# Middle-server
 
 This is the implementation of the  auth-middle-server  for Domeland 
 
