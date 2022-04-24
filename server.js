@@ -30,6 +30,15 @@ app.get('/web3', async (req, res) => {
 });
 
 
+app.get('/web3/verify', async (req, res) => {
+  const token = req.headers['Authorization']
+  const { address, body } = await Web3Token.verify(token);
+  console.log('Verify OK, Address Recovered', address, body);
+  res.json({ message: ' Verify token ' });
+});
+
+
+
 // Domeland user register api
  app.post('/web3/register', tokenVerify, async (req, res) => {
 //app.post('/web3/register',  async (req, res) => {
@@ -55,14 +64,6 @@ app.get('/web3', async (req, res) => {
      res.json({ message: text });  
      res.status(status).json({ message: text });
          
-});
-
-// Web3-token verify api
-app.get('/web3/verify', async (req, res) => {
-    const token = req.headers['Authorization']
-    const { address, body } = await Web3Token.verify(token);
-    console.log('Verify OK, Address Recovered', address, body);
-    res.json({ message: 'Verify OK!' + address });
 });
 
 
