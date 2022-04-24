@@ -1,6 +1,8 @@
 # Middle-server
 
-This is the implementation of the  auth-middle-server  for Domeland 
+This is the implementation of the  auth-middle-server for Domeland ,<br>
+auth-middle-server should work with auth-server in one server (domeland version), <br>
+and also should deploy an nginx server in front of all , see below topology picture
 
 #### Topology
 
