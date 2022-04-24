@@ -48,7 +48,7 @@ server {
 
 ```
 
-#### Auth-Server deploy
+#### (DOMELAND) Auth-Server deploy
 
 Check Auth-server repo: https://github.com/DOMELAND/auth-server  <br>
 DOMELAND Auth-server enhance Web3 API
