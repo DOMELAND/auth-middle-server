@@ -31,7 +31,7 @@ app.get('/web3', async (req, res) => {
 
 
 // Domeland user register api
-app.post('/web3/register', tokenVerify, async (req, res) => {
+ app.post('/web3/register', tokenVerify, async (req, res) => {
 //app.post('/web3/register',  async (req, res) => {
     let address =  req.body.ethaddr;
     let passwd = req.body.password;
@@ -43,16 +43,18 @@ app.post('/web3/register', tokenVerify, async (req, res) => {
         username : usernm
     };
 
-  fetch('http://localhost:8081/register', {
+  let resp = await fetch('http://localhost:8081/register', {
         method: 'post',
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
-    })
-    .then( function (resp) {
-         console.log(resp.status);
-         console.log(resp.statusText);
-         res.status(resp.status).json({ message: resp.statusText });
-    })
+    });
+
+     console.log( resp.ok );
+     let status = resp.status;
+     let text = await resp.text();
+     res.json({ message: text });  
+     res.status(status).json({ message: text });
+         
 });
 
 // Web3-token verify api
@@ -76,18 +78,20 @@ app.post('/web3/changepass', tokenVerify, async (req, res) => {
        password : passwd
     };
 
-    fetch('http://localhost:8081/change_pass', {
+    let resp = await fetch('http://localhost:8081/change_pass', {
         method: 'post',
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
-    })
-    .then( function (resp) {
-         console.log(resp.status);
-         console.log(resp.statusText);
-         res.status(resp.status).json({ message: resp.statusText });
-    })
-
+    });
+    
+    console.log( resp.ok );
+    let status = resp.status;
+    let text = await resp.text();
+    res.json({ message: text });  
+    res.status(status).json({ message: text });
+        
 });
+
 
 
 // Error Process Middleware
