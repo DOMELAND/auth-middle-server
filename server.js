@@ -8,7 +8,7 @@ dotenv.config();
 
 // Define MiddleWare to verify Web3-token
 let tokenVerify = async (req, res, next) => {
-    const token = req.headers['Authorization']
+    const token = req.headers['authorization']
     const { address, body } = await Web3Token.verify(token);
     //  throw new Error('Web3-oken verify failed !')
     console.log('Verified by Middleware! Address Recovered', address, body);
@@ -31,7 +31,7 @@ app.get('/web3', async (req, res) => {
 
 
 app.get('/web3/verify', async (req, res) => {
-  const token = req.headers['Authorization']
+  const token = req.headers['authorization']
   const { address, body } = await Web3Token.verify(token);
   console.log('Verify OK, Address Recovered', address, body);
   res.json({ message: ' Verify token ' });
@@ -41,7 +41,7 @@ app.get('/web3/verify', async (req, res) => {
 
 // Domeland user register api
  app.post('/web3/register', tokenVerify, async (req, res) => {
-//app.post('/web3/register',  async (req, res) => {
+// app.post('/web3/register',  async (req, res) => {
     let address =  req.body.ethaddr;
     let passwd = req.body.password;
     let usernm = req.body.username;
