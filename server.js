@@ -7,7 +7,7 @@ const fetch = require('node-fetch');
 
 dotenv.config();
 
-const authhead = 'Authorization';
+const authhead = 'authorization';
 
 // Define MiddleWare to verify Web3-token
 let tokenVerify = async (req, res, next) => {
