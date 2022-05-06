@@ -20,8 +20,6 @@ let tokenVerify = async (req, res, next) => {
 };
 
 
-
-
 // Create express app
 const app = express();
 
@@ -67,7 +65,7 @@ app.get('/web3/verify', async (req, res) => {
      console.log( resp.ok );
      let status = resp.status;
      let text = await resp.text();
-     res.json({ message: text });  
+//     res.json({ message: text });  
      res.status(status).json({ message: text });
          
 });
@@ -94,7 +92,7 @@ app.post('/web3/changepass', tokenVerify, async (req, res) => {
     console.log( resp.ok );
     let status = resp.status;
     let text = await resp.text();
-    res.json({ message: text });  
+  //  res.json({ message: text });  
     res.status(status).json({ message: text });
         
 });
