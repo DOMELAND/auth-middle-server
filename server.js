@@ -11,7 +11,8 @@ const authhead = 'authorization';
 
 // Define MiddleWare to verify Web3-token
 let tokenVerify = async (req, res, next) => {
-    const token = req.headers[ authhead ]
+    const token = req.headers[ authhead ];
+    console.log('Auth-head ', token);
     const { address, body } = await Web3Token.verify(token);
     //  throw new Error('Web3-oken verify failed !')
     console.log('Verified by Middleware! Address Recovered', address, body);
@@ -36,7 +37,7 @@ app.get('/web3', async (req, res) => {
 
 
 app.get('/web3/verify', async (req, res) => {
-  const token = req.headers[ authhead ]
+  const token = req.headers[ authhead ];
   const { address, body } = await Web3Token.verify(token);
   console.log('Verify OK, Address Recovered', address, body);
   res.json({ message: ' Verify token ' });
