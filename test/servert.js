@@ -8,10 +8,12 @@ dotenv.config();
 
 // Define MiddleWare to verify Web3-token
 let tokenVerify = async (req, res, next) => {
-    const token = req.headers['Authorization']
+    const token = req.headers['authorization']
+    console.log('authorization',req.headers);    
     const { address, body } = await Web3Token.verify(token);
-    //  throw new Error('Web3-oken verify failed !')
+
     console.log('Verified by Middleware! Address Recovered', address, body);
+        //  throw new Error('Web3-oken verify failed !')
     next();
 };
 
@@ -30,9 +32,18 @@ app.get('/web3', async (req, res) => {
 });
 
 
+app.get('/web3/verify', async (req, res) => {
+  const token = req.headers['Authorization']
+  const { address, body } = await Web3Token.verify(token);
+  console.log('Verify OK, Address Recovered', address, body);
+  res.json({ message: ' Verify token ' });
+});
+
+
+
 // Domeland user register api
- //app.post('/web3/register', tokenVerify, async (req, res) => {
-app.post('/web3/register',  async (req, res) => {
+ app.post('/web3/register',tokenVerify,  async (req, res) => {
+//app.post('/web3/register',  async (req, res) => {
     let address =  req.body.ethaddr;
     let passwd = req.body.password;
     let usernm = req.body.username;
@@ -42,34 +53,15 @@ app.post('/web3/register',  async (req, res) => {
         password : passwd,
         username : usernm
     };
-
-  let resp = await fetch('http://localhost:8081/register', {
-        method: 'post',
-        body:    JSON.stringify(body),
-        headers: { 'Content-Type': 'application/json' },
-    });
-
-     console.log( resp.ok );
-     let status = resp.status;
-     let text = await resp.text();
-     res.json({ message: text });  
-     res.status(status).json({ message: text });
-         
-});
-
-// Web3-token verify api
-app.get('/web3/verify', async (req, res) => {
-    const token = req.headers['Authorization']
-    const { address, body } = await Web3Token.verify(token);
-    console.log('Verify OK, Address Recovered', address, body);
-    res.json({ message: 'Verify OK!' + address });
+res.json({ message: 'Hello DOMELAND Web3 API pass' });
+  console.log('Verify OK, Address Recovered',address);
 });
 
 
 // User change password
 // need the ethaddr and password passed as a JSON object: {“ethaddr":”0x8C.......34b", “password": “123456789"}
-//app.post('/web3/changepass', tokenVerify, async (req, res) => {
-app.post('/web3/changepass',  async (req, res) => {
+app.post('/web3/changepass', tokenVerify, async (req, res) => {
+//app.post('/web3/changepass',  async (req, res) => {
     let address =  req.body.ethaddr;
     let passwd = req.body.password;
     
